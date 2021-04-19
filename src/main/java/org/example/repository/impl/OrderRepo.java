@@ -11,6 +11,7 @@ public class OrderRepo implements RepositoryCrud<Order> {
 
     @Override
     public Order select(int id) {
+        String query = "SELECT * FROM internet_shop.order WHERE id = ?";
         return null;
     }
 

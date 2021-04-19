@@ -11,6 +11,7 @@ public class CourierRepo implements RepositoryCrud<Courier> {
 
     @Override
     public Courier select(int id) {
+        String query = "SELECT * FROM internet_shop.courier WHERE id = ?";
         return null;
     }
 

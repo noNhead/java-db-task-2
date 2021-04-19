@@ -11,6 +11,7 @@ public class BouquetRepo implements RepositoryCrud<Bouquet> {
 
     @Override
     public Bouquet select(int id) {
+        String query = "SELECT * FROM internet_shop.bouquet WHERE id = ?";
         return null;
     }
 

@@ -13,6 +13,7 @@ public class UserRepository implements RepositoryCrud<User> {
 
     @Override
     public User select(int id) {
+        String query = "SELECT * FROM internet_shop.username WHERE id = ?";
         return null;
     }
 

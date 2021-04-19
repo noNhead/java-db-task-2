@@ -11,6 +11,7 @@ public class PromotionalCodeRepo implements RepositoryCrud<PromotionalCode> {
 
     @Override
     public PromotionalCode select(int id) {
+        String query = "SELECT * FROM internet_shop.promotional_code WHERE id = ?";
         return null;
     }
 

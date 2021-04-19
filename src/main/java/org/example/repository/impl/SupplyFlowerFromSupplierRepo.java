@@ -11,6 +11,7 @@ public class SupplyFlowerFromSupplierRepo implements RepositoryCrud<FlowerSupply
 
     @Override
     public FlowerSupplyFromSupplier select(int id) {
+        String query = "SELECT * FROM internet_shop.flower_has_supplier WHERE id = ?";
         return null;
     }
 

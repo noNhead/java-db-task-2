@@ -11,6 +11,7 @@ public class FlowerRepo implements RepositoryCrud<Flower>{
 
     @Override
     public Flower select(int id) {
+        String query = "SELECT * FROM internet_shop.flower WHERE id = ?";
         return null;
     }
 

@@ -11,6 +11,7 @@ public class SupplierRepo implements RepositoryCrud<Supplier> {
 
     @Override
     public Supplier select(int id) {
+        String query = "SELECT * FROM internet_shop.supplier WHERE id = ?";
         return null;
     }
 
