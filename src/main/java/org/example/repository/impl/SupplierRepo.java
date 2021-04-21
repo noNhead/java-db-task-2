@@ -44,12 +44,13 @@ public class SupplierRepo implements RepositoryCrud<Supplier> {
 
     @Override
     public void create(Supplier object) {
-        String query = "INSERT INTO internet_shop.supplier (name, phone, email) " +
-                "VALUES (?, ?, ?)";
+        String query = "INSERT INTO internet_shop.supplier (name, phone, email, address_id) " +
+                "VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(
                 query,
                 object.getName(),
                 object.getPhone(),
-                object.getEmail());
+                object.getEmail(),
+                object.getAddressId());
     }
 }
