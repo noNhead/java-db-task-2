@@ -34,7 +34,7 @@ public class ImitationOfWork {
     private OrderRepo orderRepo;
 
     public void run(){
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        /*Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
         addressRepo.create(new Address(1, "country","city", "street", "house", "apartment1"));
         bouquetRepo.create(new Bouquet(1, "bouquet name", "description"));
@@ -45,7 +45,7 @@ public class ImitationOfWork {
         supplierRepo.create(new Supplier(1,"name","phone","email", 1));
         supplyFlowerFromSupplierRepo.create(new FlowerSupplyFromSupplier(1, 1, 2, 11, timestamp));
         promotionalCodeRepo.create(new PromotionalCode(1, "code", "description", true));
-        orderRepo.create(new Order(1, 1, 1, 1, 1, 1, timestamp));
+        orderRepo.create(new Order(1, 1, 1, 1, 1, 1, timestamp));*/
 
 
         //LOGGER.info(addressRepo.select(1).toString());

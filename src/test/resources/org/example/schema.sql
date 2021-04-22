@@ -1,158 +1,158 @@
-create schema internet_shop
+create schema INTERNET_SHOP;
 
-create table internet_shop.address
+create table INTERNET_SHOP.ADDRESS
 (
-    id        serial       not null
-        constraint address_pk
+    ID        serial       not null
+        constraint ADDRESS_PK
             primary key,
-    country   varchar(255) not null,
-    city      varchar(255) not null,
-    street    varchar(255) not null,
-    house     varchar(255),
-    apartment varchar(255) not null
+    COUNTRY   varchar(255) not null,
+    CITY      varchar(255) not null,
+    STREET    varchar(255) not null,
+    HOUSE     varchar(255),
+    APARTMENT varchar(255) not null
 );
 
-create table internet_shop.bouquet
+create table INTERNET_SHOP.BOUQUET
 (
-    id          serial       not null
-        constraint bouquet_pk
+    ID          serial       not null
+        constraint BOUQUET_PK
             primary key,
-    name        varchar(255) not null,
-    description varchar(255) not null
+    NAME        varchar(255) not null,
+    DESCRIPTION varchar(255) not null
 );
 
-create table internet_shop.courier
+create table INTERNET_SHOP.COURIER
 (
-    id    serial       not null
-        constraint courier_pk
+    ID    serial       not null
+        constraint COURIER_PK
             primary key,
-    name  varchar(255) not null,
-    phone varchar(255) not null
+    NAME  varchar(255) not null,
+    PHONE varchar(255) not null
 );
 
-create table internet_shop.flower
+create table INTERNET_SHOP.FLOWER
 (
-    id     serial       not null
-        constraint flower_pk
+    ID     serial       not null
+        constraint FLOWER_PK
             primary key,
-    name   varchar(255) not null,
-    number integer      not null
+    NAME   varchar(255) not null,
+    NUMBER integer      not null
 );
 
-create table internet_shop.flower_has_bouquet
+create table INTERNET_SHOP.FLOWER_HAS_BOUQUET
 (
-    id         serial  not null
-        constraint flower_has_bouquet_pk
+    ID         serial  not null
+        constraint FLOWER_HAS_BOUQUET_PK
             primary key,
-    flower_id  integer not null,
-    bouquet_id integer not null,
-    number     integer not null
+    FLOWER_ID  integer not null,
+    BOUQUET_ID integer not null,
+    NUMBER     integer not null
 );
 
-create table internet_shop.flower_has_supplier
+create table INTERNET_SHOP.FLOWER_HAS_SUPPLIER
 (
-    id            serial  not null
-        constraint flower_has_supplier_pk
+    ID            serial  not null
+        constraint FLOWER_HAS_SUPPLIER_PK
             primary key,
-    flower_id     integer not null,
-    supplier_id   integer not null,
-    number        integer not null,
-    delivery_date timestamp
+    FLOWER_ID     integer not null,
+    SUPPLIER_ID   integer not null,
+    NUMBER        integer not null,
+    DELIVERY_DATE timestamp
 );
 
-create table internet_shop.order
+create table INTERNET_SHOP."ORDER"
 (
-    id                serial    not null
-        constraint order_pk
+    ID                serial    not null
+        constraint ORDER_PK
             primary key,
-    username_id       integer   not null,
-    date              timestamp not null,
-    courier_id        integer   not null,
-    promotional_codes integer   not null,
-    bouquet_id        integer   not null,
-    address_id        integer   not null
+    USERNAME_ID       integer   not null,
+    DATE              timestamp not null,
+    COURIER_ID        integer   not null,
+    PROMOTIONAL_CODES integer   not null,
+    BOUQUET_ID        integer   not null,
+    ADDRESS_ID        integer   not null
 );
 
-create table internet_shop.promotional_code
+create table INTERNET_SHOP.PROMOTIONAL_CODE
 (
-    id          serial                not null
-        constraint promotional_code_pk
+    ID          serial                not null
+        constraint PROMOTIONAL_CODE_PK
             primary key,
-    code        varchar(255)          not null,
-    description varchar(255)          not null,
-    active      boolean default false not null
+    CODE        varchar(255)          not null,
+    DESCRIPTION varchar(255)          not null,
+    ACTIVE      boolean default false not null
 );
 
-create table internet_shop.supplier
+create table INTERNET_SHOP.SUPPLIER
 (
-    id         serial       not null
-        constraint supplier_pk
+    ID         serial       not null
+        constraint SUPPLIER_PK
             primary key,
-    name       varchar(255) not null,
-    phone      varchar(255),
-    email      varchar(255) not null,
-    address_id integer      not null
+    NAME       varchar(255) not null,
+    PHONE      varchar(255),
+    EMAIL      varchar(255) not null,
+    ADDRESS_ID integer      not null
 );
 
-create table internet_shop.users
+create table INTERNET_SHOP.USERS
 (
-    id          serial       not null
-        constraint username_pk
+    ID          serial       not null
+        constraint USERNAME_PK
             primary key,
-    username    varchar(255) not null,
-    email       varchar(255) not null,
-    create_time timestamp    not null,
-    active      boolean      not null,
-    role        varchar(45)  not null,
-    phone       varchar(45)  not null
+    USERNAME    varchar(255) not null,
+    EMAIL       varchar(255) not null,
+    CREATE_TIME timestamp    not null,
+    ACTIVE      boolean      not null,
+    ROLE        varchar(45)  not null,
+    PHONE       varchar(45)  not null
 );
 
-alter table internet_shop.flower_has_bouquet
-    add constraint flower_has_bouquet_flower_id_fk
-        foreign key (flower_id) references flower
+alter table INTERNET_SHOP.FLOWER_HAS_BOUQUET
+    add constraint FLOWER_HAS_BOUQUET_FLOWER_ID_FK
+        foreign key (FLOWER_ID) references FLOWER
             on update restrict;
 
-alter table internet_shop.flower_has_bouquet
-    add constraint flower_has_bouquet_bouquet_id_fk
-        foreign key (bouquet_id) references bouquet
+alter table INTERNET_SHOP.FLOWER_HAS_BOUQUET
+    add constraint FLOWER_HAS_BOUQUET_BOUQUET_ID_FK
+        foreign key (BOUQUET_ID) references BOUQUET
             on update restrict;
 
-alter table internet_shop.flower_has_supplier
-    add constraint flower_has_supplier_flower_id_fk
-    foreign key (flower_id) references flower
+alter table INTERNET_SHOP.FLOWER_HAS_SUPPLIER
+    add constraint FLOWER_HAS_SUPPLIER_FLOWER_ID_FK
+    foreign key (FLOWER_ID) references FLOWER
             on update restrict;
 
-alter table internet_shop.flower_has_supplier
-    add constraint flower_has_supplier_supplier_id_fk
-        foreign key (supplier_id) references supplier
+alter table INTERNET_SHOP.FLOWER_HAS_SUPPLIER
+    add constraint FLOWER_HAS_SUPPLIER_SUPPLIER_ID_FK
+        foreign key (SUPPLIER_ID) references SUPPLIER
             on update restrict;
 
-alter table internet_shop.order
-    add constraint order_users_id_fk
-        foreign key (username_id) references users
+alter table INTERNET_SHOP."ORDER"
+    add constraint ORDER_USERS_ID_FK
+        foreign key (USERNAME_ID) references USERS
             on update restrict;
 
-alter table internet_shop.order
-    add constraint order_courier_id_fk
-        foreign key (courier_id) references courier
+alter table INTERNET_SHOP."ORDER"
+    add constraint ORDER_COURIER_ID_FK
+        foreign key (COURIER_ID) references COURIER
             on update restrict;
 
-alter table internet_shop.order
-    add constraint order_promotional_codes_fk
-        foreign key (promotional_codes) references promotional_code
+alter table INTERNET_SHOP."ORDER"
+    add constraint ORDER_PROMOTIONAL_CODES_FK
+        foreign key (PROMOTIONAL_CODES) references PROMOTIONAL_CODE
             on update restrict;
 
-alter table internet_shop.order
-    add constraint order_bouquet_id_fk
-        foreign key (bouquet_id) references bouquet
+alter table INTERNET_SHOP."ORDER"
+    add constraint ORDER_BOUQUET_ID_FK
+        foreign key (BOUQUET_ID) references BOUQUET
             on update restrict;
 
-alter table internet_shop.order
-    add constraint order_address_id_fk
-        foreign key (address_id) references address
+alter table INTERNET_SHOP."ORDER"
+    add constraint ORDER_ADDRESS_ID_FK
+        foreign key (ADDRESS_ID) references ADDRESS
             on update restrict;
 
-alter table internet_shop.supplier
-    add constraint supplier_address_id_fk
-        foreign key (address_id) references address
+alter table INTERNET_SHOP.SUPPLIER
+    add constraint SUPPLIER_ADDRESS_ID_FK
+        foreign key (ADDRESS_ID) references ADDRESS
             on update restrict;

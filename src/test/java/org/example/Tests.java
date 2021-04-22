@@ -2,10 +2,13 @@ package org.example;
 
 import org.example.repoTests.*;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
-@JdbcTest
+@SpringBootTest
+@AutoConfigureTestDatabase
 @Sql({"schema.sql", "test-data.sql"})
 public class Tests {
     private final AddressTest addressTest = new AddressTest();
