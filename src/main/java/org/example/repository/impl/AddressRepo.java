@@ -24,18 +24,18 @@ public class AddressRepo implements RepositoryCrud<Address> {
     }
 
     @Override
-    public void delete(Address object) {
+    public int delete(int id) {
         String query = "DELETE FROM internet_shop.address WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
-                object.getId());
+                id);
     }
 
     @Override
-    public void update(Address object) {
+    public int update(Address object) {
         String query = "UPDATE internet_shop.address SET country = ?, city = ?, " +
                 "street = ?, house = ?, apartment = ? WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getCountry(),
                 object.getCity(),
@@ -46,10 +46,10 @@ public class AddressRepo implements RepositoryCrud<Address> {
     }
 
     @Override
-    public void create(Address object) {
+    public int create(Address object) {
         String query = "INSERT INTO internet_shop.address (country, city, street, house, apartment) " +
                 "VALUES (?, ?, ?, ?, ?)";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getCountry(),
                 object.getCity(),

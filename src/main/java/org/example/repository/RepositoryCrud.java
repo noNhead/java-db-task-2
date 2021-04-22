@@ -2,11 +2,11 @@ package org.example.repository;
 
 public interface RepositoryCrud<T> {
 
-    public T select(int id);
+    T select(int id);
 
-    public void delete(T object);
+    int delete(int id);
 
-    public void update(T object);
+    int update(T object);
 
-    public void create(T object);
+    int create(T object);
 }

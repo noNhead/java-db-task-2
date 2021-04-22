@@ -1,6 +1,5 @@
 package org.example.repository.impl;
 
-import org.example.entity.Address;
 import org.example.entity.Bouquet;
 import org.example.repository.RepositoryCrud;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +21,17 @@ public class BouquetRepo implements RepositoryCrud<Bouquet> {
     }
 
     @Override
-    public void delete(Bouquet object) {
+    public int delete(int id) {
         String query = "DELETE FROM internet_shop.bouquet WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
-                object.getId());
+                id);
     }
 
     @Override
-    public void update(Bouquet object) {
+    public int update(Bouquet object) {
         String query = "UPDATE internet_shop.bouquet SET name = ?, description = ? WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getName(),
                 object.getDescription(),
@@ -40,10 +39,10 @@ public class BouquetRepo implements RepositoryCrud<Bouquet> {
     }
 
     @Override
-    public void create(Bouquet object) {
+    public int create(Bouquet object) {
         String query = "INSERT INTO internet_shop.bouquet (name, description) " +
                 "VALUES (?, ?)";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getName(),
                 object.getDescription());

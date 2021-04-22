@@ -25,18 +25,18 @@ public class UserRepository implements RepositoryCrud<User> {
     }
 
     @Override
-    public void delete(User object) {
+    public int delete(int id) {
         String query = "DELETE FROM internet_shop.username WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
-                object.getId());
+                id);
     }
 
     @Override
-    public void update(User object) {
+    public int update(User object) {
         String query = "UPDATE internet_shop.username SET username = ?, email = ?, " +
                 "create_time = ?, active = ?, role = ?, phone = ? WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getUsername(),
                 object.getEmail(),
@@ -48,10 +48,10 @@ public class UserRepository implements RepositoryCrud<User> {
     }
 
     @Override
-    public void create(User object) {
+    public int create(User object) {
         String query = "INSERT INTO internet_shop.users (username, email, create_time, active, role, phone) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getUsername(),
                 object.getEmail(),

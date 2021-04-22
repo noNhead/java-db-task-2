@@ -21,17 +21,17 @@ public class FlowerRepo implements RepositoryCrud<Flower>{
     }
 
     @Override
-    public void delete(Flower object) {
+    public int delete(int id) {
         String query = "DELETE FROM internet_shop.flower WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
-                object.getId());
+                id);
     }
 
     @Override
-    public void update(Flower object) {
+    public int update(Flower object) {
         String query = "UPDATE internet_shop.flower SET name = ?, number = ? WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getName(),
                 object.getNumber(),
@@ -39,10 +39,10 @@ public class FlowerRepo implements RepositoryCrud<Flower>{
     }
 
     @Override
-    public void create(Flower object) {
+    public int create(Flower object) {
         String query = "INSERT INTO internet_shop.flower (name, number) " +
                 "VALUES (?, ?)";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getName(),
                 object.getNumber());

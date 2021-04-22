@@ -1,6 +1,5 @@
 package org.example.repository.impl;
 
-import org.example.entity.Address;
 import org.example.entity.Courier;
 import org.example.repository.RepositoryCrud;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +21,17 @@ public class CourierRepo implements RepositoryCrud<Courier> {
     }
 
     @Override
-    public void delete(Courier object) {
+    public int delete(int id) {
         String query = "DELETE FROM internet_shop.courier WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
-                object.getId());
+                id);
     }
 
     @Override
-    public void update(Courier object) {
+    public int update(Courier object) {
         String query = "UPDATE internet_shop.courier SET name = ?, phone = ? WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getName(),
                 object.getPhone(),
@@ -40,10 +39,10 @@ public class CourierRepo implements RepositoryCrud<Courier> {
     }
 
     @Override
-    public void create(Courier object) {
+    public int create(Courier object) {
         String query = "INSERT INTO internet_shop.courier (name, phone) " +
                 "VALUES (?, ?)";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getName(),
                 object.getPhone());

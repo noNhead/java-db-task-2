@@ -1,0 +1,10 @@
+INSERT INTO internet_shop.address (country, city, street, house, apartment) VALUES (country, city, street, house, apartment);
+INSERT INTO internet_shop.bouquet (name, description) VALUES (name, description);
+INSERT INTO internet_shop.courier (name, phone) VALUES (name, phone);
+INSERT INTO internet_shop.flower (name, number) VALUES (name, 10);
+INSERT INTO internet_shop.supplier (name, phone, email, address_id) VALUES (name, phone, email, 1);
+INSERT INTO internet_shop.flower_has_bouquet (flower_id, bouquet_id, number) VALUES (1, 1, 10);
+INSERT INTO internet_shop.flower_has_supplier (flower_id, supplier_id, number, delivery_date) VALUES (1, 1, 10, CURRENT_TIMESTAMP);
+INSERT INTO internet_shop.promotional_code (code, description, active) VALUES (code, description, true);
+INSERT INTO internet_shop.users (username, email, create_time, active, role, phone) VALUES (username, email, CURRENT_TIMESTAMP, true, role, phone);
+INSERT INTO internet_shop.order (username_id, date, courier_id, promotional_codes, bouquet_id, address_id) VALUES (1, CURRENT_TIMESTAMP, 1, 1, 1, 1);

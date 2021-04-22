@@ -23,18 +23,18 @@ public class SupplierRepo implements RepositoryCrud<Supplier> {
     }
 
     @Override
-    public void delete(Supplier object) {
+    public int delete(int id) {
         String query = "DELETE FROM internet_shop.supplier WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
-                object.getId());
+                id);
     }
 
     @Override
-    public void update(Supplier object) {
+    public int update(Supplier object) {
         String query = "UPDATE internet_shop.supplier SET name = ?, phone = ?, " +
                 "email = ? WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getName(),
                 object.getPhone(),
@@ -43,10 +43,10 @@ public class SupplierRepo implements RepositoryCrud<Supplier> {
     }
 
     @Override
-    public void create(Supplier object) {
+    public int create(Supplier object) {
         String query = "INSERT INTO internet_shop.supplier (name, phone, email, address_id) " +
                 "VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getName(),
                 object.getPhone(),

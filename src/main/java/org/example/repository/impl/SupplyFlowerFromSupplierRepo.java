@@ -23,18 +23,18 @@ public class SupplyFlowerFromSupplierRepo implements RepositoryCrud<FlowerSupply
     }
 
     @Override
-    public void delete(FlowerSupplyFromSupplier object) {
+    public int delete(int id) {
         String query = "DELETE FROM internet_shop.flower_has_supplier WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
-                object.getId());
+                id);
     }
 
     @Override
-    public void update(FlowerSupplyFromSupplier object) {
+    public int update(FlowerSupplyFromSupplier object) {
         String query = "UPDATE internet_shop.flower_has_supplier SET flower_id = ?, supplier_id = ?, " +
                 "number = ?, delivery_date = ? WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getFlowerId(),
                 object.getSupplierId(),
@@ -44,10 +44,10 @@ public class SupplyFlowerFromSupplierRepo implements RepositoryCrud<FlowerSupply
     }
 
     @Override
-    public void create(FlowerSupplyFromSupplier object) {
+    public int create(FlowerSupplyFromSupplier object) {
         String query = "INSERT INTO internet_shop.flower_has_supplier (flower_id, supplier_id, number, delivery_date) " +
                 "VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getFlowerId(),
                 object.getSupplierId(),

@@ -1,6 +1,5 @@
 package org.example.repository.impl;
 
-import org.example.entity.Address;
 import org.example.entity.PromotionalCode;
 import org.example.repository.RepositoryCrud;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +22,18 @@ public class PromotionalCodeRepo implements RepositoryCrud<PromotionalCode> {
     }
 
     @Override
-    public void delete(PromotionalCode object) {
+    public int delete(int id) {
         String query = "DELETE FROM internet_shop.promotional_code WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
-                object.getId());
+                id);
     }
 
     @Override
-    public void update(PromotionalCode object) {
+    public int update(PromotionalCode object) {
         String query = "UPDATE internet_shop.promotional_code SET code = ?, description = ?, " +
                 "active = ? WHERE id = ?";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getCode(),
                 object.getDescription(),
@@ -43,10 +42,10 @@ public class PromotionalCodeRepo implements RepositoryCrud<PromotionalCode> {
     }
 
     @Override
-    public void create(PromotionalCode object) {
+    public int create(PromotionalCode object) {
         String query = "INSERT INTO internet_shop.promotional_code (code, description, active) " +
                 "VALUES (?, ?, ?)";
-        jdbcTemplate.update(
+        return jdbcTemplate.update(
                 query,
                 object.getCode(),
                 object.getDescription(),
