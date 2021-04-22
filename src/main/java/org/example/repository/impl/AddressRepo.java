@@ -8,8 +8,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class AddressRepo implements RepositoryCrud<Address> {
-    @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public Address select(int id) {
