@@ -1,6 +1,6 @@
-create schema if not exists internet_shop;
+create schema internet_shop;
 
-create table if not exists internet_shop.address
+create table internet_shop.address
 (
     id        serial       not null
         constraint address_pk
@@ -12,7 +12,7 @@ create table if not exists internet_shop.address
     apartment varchar(255) not null
 );
 
-create table if not exists internet_shop.bouquet
+create table internet_shop.bouquet
 (
     id          serial       not null
         constraint bouquet_pk
@@ -21,7 +21,7 @@ create table if not exists internet_shop.bouquet
     description varchar(255) not null
 );
 
-create table if not exists internet_shop.courier
+create table internet_shop.courier
 (
     id    serial       not null
         constraint courier_pk
@@ -30,7 +30,7 @@ create table if not exists internet_shop.courier
     phone varchar(255) not null
 );
 
-create table if not exists internet_shop.flower
+create table internet_shop.flower
 (
     id     serial       not null
         constraint flower_pk
@@ -39,7 +39,7 @@ create table if not exists internet_shop.flower
     number integer      not null
 );
 
-create table if not exists internet_shop.flower_has_bouquet
+create table internet_shop.flower_has_bouquet
 (
     id         serial  not null
         constraint flower_has_bouquet_pk
@@ -49,7 +49,7 @@ create table if not exists internet_shop.flower_has_bouquet
     number     integer not null
 );
 
-create table if not exists internet_shop.flower_has_supplier
+create table internet_shop.flower_has_supplier
 (
     id            serial  not null
         constraint flower_has_supplier_pk
@@ -60,7 +60,7 @@ create table if not exists internet_shop.flower_has_supplier
     delivery_date timestamp
 );
 
-create table if not exists internet_shop.order_repo
+create table internet_shop.order_repo
 (
     id                serial    not null
         constraint order_pk
@@ -73,7 +73,7 @@ create table if not exists internet_shop.order_repo
     address_id        integer   not null
 );
 
-create table if not exists internet_shop.promotional_code
+create table internet_shop.promotional_code
 (
     id          serial                not null
         constraint promotional_code_pk
@@ -83,7 +83,7 @@ create table if not exists internet_shop.promotional_code
     active      boolean default false not null
 );
 
-create table if not exists internet_shop.supplier
+create table internet_shop.supplier
 (
     id         serial       not null
         constraint supplier_pk
@@ -94,7 +94,7 @@ create table if not exists internet_shop.supplier
     address_id integer      not null
 );
 
-create table if not exists internet_shop.users
+create table internet_shop.users
 (
     id          serial       not null
         constraint username_pk
@@ -119,7 +119,7 @@ alter table internet_shop.flower_has_bouquet
 
 alter table internet_shop.flower_has_supplier
     add constraint flower_has_supplier_flower_id_fk
-    foreign key (flower_id) references flower
+        foreign key (flower_id) references flower
             on update restrict;
 
 alter table internet_shop.flower_has_supplier

@@ -4,12 +4,17 @@ import org.example.entity.Courier;
 import org.example.repository.impl.CourierRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@JdbcTest
+@SpringBootTest
+@AutoConfigureTestDatabase
+@Sql({"schema_courier.sql"})
 public class CourierTest {
     @Autowired
     private CourierRepo courierRepo;
@@ -31,6 +36,6 @@ public class CourierTest {
 
     @Test
     public void delete() {
-        assertEquals(courierRepo.delete(1), 1);
+        assertEquals(courierRepo.delete(2), 1);
     }
 }

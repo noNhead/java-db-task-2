@@ -4,12 +4,17 @@ import org.example.entity.Supplier;
 import org.example.repository.impl.SupplierRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@JdbcTest
+@SpringBootTest
+@AutoConfigureTestDatabase
+@Sql({"schema_supplier.sql"})
 public class SupplierTest {
     @Autowired
     private SupplierRepo supplierRepo;
@@ -31,6 +36,6 @@ public class SupplierTest {
 
     @Test
     public void delete() {
-        assertEquals(supplierRepo.delete(1), 1);
+        assertEquals(supplierRepo.delete(2), 1);
     }
 }

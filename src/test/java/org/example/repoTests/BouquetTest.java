@@ -4,12 +4,17 @@ import org.example.entity.Bouquet;
 import org.example.repository.impl.BouquetRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@JdbcTest
+@SpringBootTest
+@AutoConfigureTestDatabase
+@Sql({"schema_bouquet.sql"})
 public class BouquetTest {
         @Autowired
         private BouquetRepo bouquetRepo;
@@ -31,6 +36,6 @@ public class BouquetTest {
 
         @Test
         public void delete() {
-            assertEquals(bouquetRepo.delete(1), 1);
+            assertEquals(bouquetRepo.delete(2), 1);
         }
 }

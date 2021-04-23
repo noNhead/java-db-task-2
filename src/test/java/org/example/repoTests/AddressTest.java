@@ -1,30 +1,22 @@
 package org.example.repoTests;
 
 import org.example.entity.Address;
-import org.example.repository.ImitationOfWork;
 import org.example.repository.impl.AddressRepo;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.jdbc.Sql;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
+@Sql({"schema_address.sql"})
 public class AddressTest {
     @Autowired
-    private JdbcTemplate jdbcTemplate;
-    @Autowired
     private AddressRepo addressRepo;
-
-    @BeforeEach
-    public void setup(){
-        addressRepo.setJdbcTemplate(jdbcTemplate);
-    }
 
     @Test
     public void select() {
@@ -55,6 +47,6 @@ public class AddressTest {
 
     @Test
     public void delete() {
-        assertEquals(addressRepo.delete(1), 1);
+        assertEquals(addressRepo.delete(2), 1);
     }
 }

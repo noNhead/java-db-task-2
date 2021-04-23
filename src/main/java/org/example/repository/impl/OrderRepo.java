@@ -13,7 +13,7 @@ public class OrderRepo implements RepositoryCrud<Order> {
 
     @Override
     public Order select(int id) {
-        String query = "SELECT * FROM internet_shop.order WHERE id = ?";
+        String query = "SELECT * FROM internet_shop.order_repo WHERE id = ?";
         return jdbcTemplate.queryForObject(query, new Object[]{id}, (resultSet, i) -> new Order(
                 resultSet.getInt("id"),
                 resultSet.getInt("username_id"),
@@ -26,7 +26,7 @@ public class OrderRepo implements RepositoryCrud<Order> {
 
     @Override
     public int delete(int id) {
-        String query = "DELETE FROM internet_shop.order WHERE id = ?";
+        String query = "DELETE FROM internet_shop.order_repo WHERE id = ?";
         return jdbcTemplate.update(
                 query,
                 id);
@@ -34,7 +34,7 @@ public class OrderRepo implements RepositoryCrud<Order> {
 
     @Override
     public int update(Order object) {
-        String query = "UPDATE internet_shop.order SET username_id = ?, date = ?, " +
+        String query = "UPDATE internet_shop.order_repo SET username_id = ?, date = ?, " +
                 "courier_id = ?, promotional_codes = ?, bouquet_id = ?, address_id = ? WHERE id = ?";
         return jdbcTemplate.update(
                 query,
@@ -49,7 +49,7 @@ public class OrderRepo implements RepositoryCrud<Order> {
 
     @Override
     public int create(Order object) {
-        String query = "INSERT INTO internet_shop.order " +
+        String query = "INSERT INTO internet_shop.order_repo " +
                 "(username_id, date, courier_id, promotional_codes, bouquet_id, address_id) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(
