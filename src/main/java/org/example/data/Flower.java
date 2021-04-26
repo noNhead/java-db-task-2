@@ -1,14 +1,14 @@
-package org.example.entity;
+package org.example.data;
 
-public class Courier {
+public class Flower {
     private int id;
     private String name;
-    private String phone;
+    private int number;
 
-    public Courier(int id, String name, String phone) {
+    public Flower(int id, String name, int number) {
         this.id = id;
         this.name = name;
-        this.phone = phone;
+        this.number = number;
     }
 
     public int getId() {
@@ -27,11 +27,11 @@ public class Courier {
         this.name = name;
     }
 
-    public String getPhone() {
-        return phone;
+    public int getNumber() {
+        return number;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setNumber(int number) {
+        this.number = number;
     }
 }

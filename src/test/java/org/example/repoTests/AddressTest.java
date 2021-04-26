@@ -1,6 +1,6 @@
 package org.example.repoTests;
 
-import org.example.entity.Address;
+import org.example.data.Address;
 import org.example.repository.impl.AddressRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package org.example.repository.impl;
 
 import org.example.repository.RepositoryCrud;
-import org.example.entity.Flower;
+import org.example.data.Flower;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

@@ -1,10 +1,9 @@
 package org.example.repoTests;
 
-import org.example.entity.Flower;
+import org.example.data.Flower;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.example.repository.impl.FlowerRepo;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;

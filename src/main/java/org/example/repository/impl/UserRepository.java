@@ -1,6 +1,6 @@
 package org.example.repository.impl;
 
-import org.example.entity.User;
+import org.example.data.User;
 import org.example.repository.RepositoryCrud;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

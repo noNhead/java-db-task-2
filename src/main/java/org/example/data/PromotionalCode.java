@@ -1,4 +1,4 @@
-package org.example.entity;
+package org.example.data;
 
 public class PromotionalCode {
     private int id;

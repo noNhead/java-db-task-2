@@ -1,6 +1,6 @@
 package org.example.repository.impl;
 
-import org.example.entity.PromotionalCode;
+import org.example.data.PromotionalCode;
 import org.example.repository.RepositoryCrud;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

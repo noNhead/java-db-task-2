@@ -1,7 +1,7 @@
 package org.example.repository.impl;
 
 import org.example.repository.RepositoryCrud;
-import org.example.entity.Supplier;
+import org.example.data.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
